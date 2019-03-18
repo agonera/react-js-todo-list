@@ -1,0 +1,9 @@
+.undone {
+    text-decoration: none;
+    color: initial;
+}
+
+.done {
+    text-decoration: line-through;
+    color: gray;
+}
