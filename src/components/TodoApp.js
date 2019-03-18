@@ -37,14 +37,23 @@ class TodoApp extends React.Component {
     removeTodo = toRemove => {
     };
 
-    markTodoDone = toUpdate => {
-
+    markTodoDone = id => {
+        this.setState(state => {
+            const todos = state.todos.map((todo) => {
+                if (id === todo.id) {
+                    todo.done = !todo.done;
+                }
+                return todo;
+            });
+            return { todos };
+        });
     };
 
 
     render() {
         return (
             <div>
+                <h1>Todo List</h1>
                 <TodoForm whenUserSubmits={this.addTodo}/>
                 <TodoList todoList={this.state.todos} markTodoDone={this.markTodoDone}/>
 
