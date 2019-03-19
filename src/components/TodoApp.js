@@ -19,27 +19,41 @@ class TodoApp extends React.Component {
 
     addTodo = userInput => {
         const newTodo = {
-            id: this.state.todos.length + 1,
+            id: this.state.todos.length,
             text: userInput,
             done: false
         };
 
         this.setState(state => {
             // add at the end of array:
-            // const todos = [...state.todos, newTodo];
+            const todos = [...state.todos, newTodo];
             // const todos = this.state.todos.concat(newTodo);
-            const todos = [newTodo, ...state.todos]; // adds at the beginning
+            // const todos = [newTodo, ...state.todos]; // adds at the beginning
             return { todos };
         });
 
+
     };
 
-    removeTodo = toRemove => {
+    removeTodo = id => {
+        this.setState(state => {
+            const todos = state.todos.filter(todo => todo.id !== id);
+            return { todos };
+        });
+
+        // update other ids to avoid key duplicates
+        this.setState(state => {
+            const todos = state.todos.map((todo, newId) => {
+                todo.id = newId;
+                return todo;
+            });
+            return { todos };
+        });
     };
 
     markTodoDone = id => {
         this.setState(state => {
-            const todos = state.todos.map((todo) => {
+            const todos = state.todos.map(todo => {
                 if (id === todo.id) {
                     todo.done = !todo.done;
                 }
@@ -55,7 +69,11 @@ class TodoApp extends React.Component {
             <div>
                 <h1>Todo List</h1>
                 <TodoForm whenUserSubmits={this.addTodo}/>
-                <TodoList todoList={this.state.todos} markTodoDone={this.markTodoDone}/>
+                <TodoList
+                    todoList={this.state.todos}
+                    markTodoDone={this.markTodoDone}
+                    removeTodo={this.removeTodo}
+                />
 
             </div>
         );

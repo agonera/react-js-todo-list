@@ -9,15 +9,17 @@ class TodoItem extends React.Component {
         this.props.markTodoDone(id);
     };
 
+    onRemoveClick = () => {
+        const id = parseInt(this.props.id);
+        this.props.removeTodo(id);
+    };
+
     render() {
         const status = this.props.done ? 'done' : 'undone';
         return (
-            <li
-                key={this.props.id}
-                className={`${status}`}
-                onClick={this.onItemClick}
-            >
-                {this.props.text}
+            <li key={this.props.id}>
+                <span onClick={this.onItemClick} className={`${status}`}>{this.props.text}</span>
+                <span onClick={this.onRemoveClick}>	&#215;</span>
             </li>
         );
     };

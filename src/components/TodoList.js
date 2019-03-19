@@ -12,6 +12,7 @@ class TodoList extends React.Component {
                     text={todoItem.text}
                     done={todoItem.done}
                     markTodoDone={this.props.markTodoDone}
+                    removeTodo={this.props.removeTodo}
                 />
             );
         });
