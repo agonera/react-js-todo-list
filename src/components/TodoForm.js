@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 
 class TodoForm extends React.Component {
     state = { userInput: '' };
@@ -9,7 +11,7 @@ class TodoForm extends React.Component {
 
     onFormSubmit = e => {
         e.preventDefault();
-        this.props.whenUserSubmits(this.state.userInput);
+        this.props.onTodoSubmit(this.state.userInput);
         this.setState({ userInput: '' });
     };
 
@@ -18,17 +20,21 @@ class TodoForm extends React.Component {
             <div>
                 <form onSubmit={this.onFormSubmit}>
                     <input
-
                         type="text"
                         value={this.state.userInput}
                         onChange={this.onInputChange}
                     />
-                    <button className="waves-effect waves-light btn" type="submit">add</button>
+                    <button type="submit">add</button>
                 </form>
             </div>
         );
     }
 }
+
+
+TodoForm.propTypes = {
+    onTodoSubmit: PropTypes.func.isRequired
+};
 
 export default TodoForm;
 

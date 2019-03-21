@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/TodoItem.css';
+import PropTypes from 'prop-types';
 
 
 class TodoItem extends React.Component {
@@ -24,6 +25,15 @@ class TodoItem extends React.Component {
         );
     };
 }
+
+
+TodoItem.propTypes = {
+    markTodoDone: PropTypes.func.isRequired,
+    removeTodo: PropTypes.func.isRequired,
+    done: PropTypes.bool.isRequired,
+    id: PropTypes.number,
+    text: PropTypes.string
+};
 
 export default TodoItem;
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import TodoItem from './TodoItem';
+import PropTypes from 'prop-types';
 
 
 class TodoList extends React.Component {
@@ -17,9 +18,16 @@ class TodoList extends React.Component {
             );
         });
 
-        return <ul>{todoList}</ul>;
+        return <div>{todoList}</div>;
     }
 }
+
+
+TodoList.propTypes = {
+    todoList: PropTypes.array.isRequired,
+    markTodoDone: PropTypes.func.isRequired,
+    removeTodo: PropTypes.func.isRequired
+};
 
 export default TodoList;
 

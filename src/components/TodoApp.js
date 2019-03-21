@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
+import '../styles/TodoApp.css';
 
 
 // STRUCTURE
@@ -63,18 +64,16 @@ class TodoApp extends React.Component {
         });
     };
 
-
     render() {
         return (
             <div>
                 <h1>Todo List</h1>
-                <TodoForm whenUserSubmits={this.addTodo}/>
+                <TodoForm onTodoSubmit={this.addTodo}/>
                 <TodoList
                     todoList={this.state.todos}
                     markTodoDone={this.markTodoDone}
                     removeTodo={this.removeTodo}
                 />
-
             </div>
         );
     }
