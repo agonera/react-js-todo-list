@@ -32,8 +32,6 @@ class TodoApp extends React.Component {
             // const todos = [newTodo, ...state.todos]; // adds at the beginning
             return { todos };
         });
-
-
     };
 
     removeTodo = id => {
@@ -66,7 +64,7 @@ class TodoApp extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="todo-app">
                 <h1>Todo List</h1>
                 <TodoForm onTodoSubmit={this.addTodo}/>
                 <TodoList

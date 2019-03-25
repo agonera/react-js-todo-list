@@ -1,9 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../styles/TodoApp.css';
 
 
 class TodoForm extends React.Component {
+
     state = { userInput: '' };
+
+    componentDidMount() {
+        this.nameInput.focus();
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        this.nameInput.focus();
+    }
 
     onInputChange = e => {
         this.setState({ userInput: e.target.value });
@@ -11,8 +21,11 @@ class TodoForm extends React.Component {
 
     onFormSubmit = e => {
         e.preventDefault();
-        this.props.onTodoSubmit(this.state.userInput);
-        this.setState({ userInput: '' });
+        if (this.state.userInput) {
+            this.props.onTodoSubmit(this.state.userInput);
+            this.setState({ userInput: '' });
+        }
+
     };
 
     render() {
@@ -23,8 +36,13 @@ class TodoForm extends React.Component {
                         type="text"
                         value={this.state.userInput}
                         onChange={this.onInputChange}
+                        ref={input => {
+                            this.nameInput = input;
+                        }}
+
                     />
-                    <button type="submit">add</button>
+
+                    <button type="submit">+</button>
                 </form>
             </div>
         );

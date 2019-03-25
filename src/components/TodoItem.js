@@ -1,6 +1,8 @@
 import React from 'react';
 import '../styles/TodoItem.css';
 import PropTypes from 'prop-types';
+import '../styles/TodoApp.css';
+
 
 
 class TodoItem extends React.Component {
@@ -18,9 +20,9 @@ class TodoItem extends React.Component {
     render() {
         const status = this.props.done ? 'done' : 'undone';
         return (
-            <li key={this.props.id}>
+            <li className="todo-item" key={this.props.id}>
                 <span onClick={this.onItemClick} className={`${status}`}>{this.props.text}</span>
-                <span onClick={this.onRemoveClick}>	&#215;</span>
+                <span className="remove-item" onClick={this.onRemoveClick}>	&#215;</span>
             </li>
         );
     };
