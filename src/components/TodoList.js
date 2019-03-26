@@ -4,25 +4,23 @@ import PropTypes from 'prop-types';
 import '../styles/TodoApp.css';
 
 
-class TodoList extends React.Component {
+const TodoList = props => {
 
-    render() {
-        const todoList = this.props.todoList.map(todoItem => {
-            return (
-                <TodoItem
-                    key={todoItem.id}
-                    id={todoItem.id}
-                    text={todoItem.text}
-                    done={todoItem.done}
-                    markTodoDone={this.props.markTodoDone}
-                    removeTodo={this.props.removeTodo}
-                />
-            );
-        });
+    const todoList = props.todoList.map(({ id, text, done }) => {
+        return (
+            <TodoItem
+                key={id}
+                id={id}
+                text={text}
+                done={done}
+                markTodoDone={props.markTodoDone}
+                removeTodo={props.removeTodo}
+            />
+        );
+    });
 
-        return <div className="todo-list">{todoList}</div>;
-    }
-}
+    return <div className="todo-list">{todoList}</div>;
+};
 
 
 TodoList.propTypes = {
@@ -30,6 +28,7 @@ TodoList.propTypes = {
     markTodoDone: PropTypes.func.isRequired,
     removeTodo: PropTypes.func.isRequired
 };
+
 
 export default TodoList;
 
