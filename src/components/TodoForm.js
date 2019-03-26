@@ -7,42 +7,32 @@ class TodoForm extends React.Component {
 
     state = { userInput: '' };
 
-    componentDidMount() {
-        this.nameInput.focus();
-    }
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        this.nameInput.focus();
-    }
-
     onInputChange = e => {
         this.setState({ userInput: e.target.value });
     };
 
     onFormSubmit = e => {
         e.preventDefault();
-        if (this.state.userInput) {
-            this.props.onTodoSubmit(this.state.userInput);
+        const { userInput } = this.state;
+        if (userInput) {
+            const { onTodoSubmit } = this.props;
+            onTodoSubmit(userInput);
             this.setState({ userInput: '' });
         }
-
     };
 
     render() {
         return (
             <div>
-                <form onSubmit={this.onFormSubmit}>
+                <form className="todo-form" onSubmit={this.onFormSubmit}>
                     <input
+                        className="input-field"
+                        autoFocus
                         type="text"
                         value={this.state.userInput}
                         onChange={this.onInputChange}
-                        ref={input => {
-                            this.nameInput = input;
-                        }}
-
                     />
-
-                    <button type="submit">+</button>
+                    <button className="submit-button" type="submit">+</button>
                 </form>
             </div>
         );

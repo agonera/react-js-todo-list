@@ -6,7 +6,32 @@ body {
 }
 
 
-button {
+.app-header {
+    text-align: center;
+    font-weight: 100;
+    font-size: 50px;
+}
+
+
+.input-field {
+    background-color: #F5F5F5;
+    height: 23px;
+    width: calc(100% - 35px);
+    border: 1px #BDBDBD;
+    border-style: none none solid none;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+
+.remove-item {
+    padding-left: 6px;
+    font-size: large;
+    color: transparent;
+}
+
+
+.submit-button {
     border: none;
     background-color: #FF5252;
     color: white;
@@ -18,30 +43,7 @@ button {
 }
 
 
-form {
-    width: 100%;
-}
-
-
-h1 {
-    text-align: center;
-    font-weight: 100;
-    font-size: 50px;
-}
-
-
-input {
-    background-color: #F5F5F5;
-    height: 23px;
-    width: calc(100% - 35px);
-    border: 1px #BDBDBD;
-    border-style: none none solid none;
-    font-family: 'Roboto', sans-serif;
-
-}
-
-
-button:focus, input:focus {
+.submit-button:focus, .input-field:focus {
     outline: none;
 }
 
@@ -52,8 +54,18 @@ button:focus, input:focus {
 }
 
 
+.todo-form {
+    width: 100%;
+}
+
+
 .todo-item {
     padding: 4px 0;
+}
+
+
+.todo-item:hover .remove-item {
+    color: #FF5252;
 }
 
 
@@ -61,16 +73,4 @@ button:focus, input:focus {
     list-style-type: none;
     padding: 0;
     margin: 10px 0 0 0;
-}
-
-
-.remove-item {
-    padding-left: 3px;
-    font-size: large;
-    color: transparent;
-}
-
-
-.todo-item:hover .remove-item {
-    color: #FF5252;
 }

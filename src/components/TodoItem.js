@@ -4,16 +4,15 @@ import PropTypes from 'prop-types';
 import '../styles/TodoApp.css';
 
 
-
 class TodoItem extends React.Component {
 
     onItemClick = () => {
-        const id = parseInt(this.props.id);
+        const { id } = this.props;
         this.props.markTodoDone(id);
     };
 
     onRemoveClick = () => {
-        const id = parseInt(this.props.id);
+        const { id } = this.props;
         this.props.removeTodo(id);
     };
 
@@ -21,8 +20,8 @@ class TodoItem extends React.Component {
         const status = this.props.done ? 'done' : 'undone';
         return (
             <li className="todo-item" key={this.props.id}>
-                <span onClick={this.onItemClick} className={`${status}`}>{this.props.text}</span>
-                <span className="remove-item" onClick={this.onRemoveClick}>	&#215;</span>
+                <span className={status} onClick={this.onItemClick}>{this.props.text}</span>
+                <span className="remove-item" onClick={this.onRemoveClick}>&#215;</span>
             </li>
         );
     };

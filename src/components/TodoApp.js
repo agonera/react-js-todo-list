@@ -16,6 +16,7 @@ import '../styles/TodoApp.css';
 
 
 class TodoApp extends React.Component {
+
     state = { todos: [] };
 
     addTodo = userInput => {
@@ -65,7 +66,7 @@ class TodoApp extends React.Component {
     render() {
         return (
             <div className="todo-app">
-                <h1>Todo List</h1>
+                <h1 className="app-header">Todo List</h1>
                 <TodoForm onTodoSubmit={this.addTodo}/>
                 <TodoList
                     todoList={this.state.todos}
